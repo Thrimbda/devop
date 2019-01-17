@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-LABEL maintainer="Siyuan Wang <siyuan@momenta.ai>"
+LABEL maintainer="Siyuan Wang <siyuan.arc@gmail.com>"
 
 # change source
 # http://mirrors.tuna.tsinghua.edu.cn/
@@ -40,6 +40,8 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 USER ${USER}
+
+RUN sh -c "$(curl https://j.mp/spf13-vim3 -L)"
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/Thrimbda/shell-set-up/master/install_docker.sh)"
 
