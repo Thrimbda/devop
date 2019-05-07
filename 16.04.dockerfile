@@ -14,14 +14,24 @@ ENV USER thrimbda
 ENV TERM xterm-256color
 
 RUN apt-get update && apt-get install -y locales \
+    g++ \
     curl \
     make \
-    cmake\
     htop \
     zsh \
     unzip \
     git \
+    sudo \
     vim
+
+RUN curl -L -O https://github.com/Kitware/CMake/releases/download/v3.6.1/cmake-3.6.1.tar.gz && \
+    tar -zxvf cmake-3.6.1.tar.gz && \
+    rm cmake-3.6.1.tar.gz
+
+RUN cd cmake-3.6.1 && \
+    ./configure && \
+    make -j8 && \
+    make install
 
 RUN adduser ${USER} --gecos "" --disabled-password &&\
     echo "alas\nalas" |passwd ${USER} &&\

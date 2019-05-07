@@ -2,11 +2,13 @@
 
 > an convenient docker image configured for testing/developing/operates
 >
-> It‘s name was inspired by a fancy word *DevOps*.
+> It‘s name was inspired by a (until now) fancy word *DevOps*.
 
 have a try, or even use it as your base image. You do the math :)
 
 ## Usage
+
+versions: `16.04` `18.04`
 
 Build it on you own or pull and run a pre-built docker image.
 
@@ -33,6 +35,7 @@ docker run -it --rm thrimbda/devop:latest
 ### software installed
 
 - curl
+- g++
 - make
 - cmake
 - htop
