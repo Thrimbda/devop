@@ -55,4 +55,6 @@ RUN sh -c "$(curl https://j.mp/spf13-vim3 -L)"
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/Thrimbda/shell-set-up/master/install_docker.sh)"
 
+RUN echo "alas\n/bin/zsh" | chsh
+
 CMD [ "zsh" ]
