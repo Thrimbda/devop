@@ -51,7 +51,9 @@ ENV LC_ALL en_US.UTF-8
 
 USER ${USER}
 
-RUN sh -c "$(curl https://j.mp/spf13-vim3 -L)"
+RUN git clone --depth=2 https://github.com/amix/vimrc.git /opt/vim_runtime && \
+    sh opt/vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime --all
+
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/Thrimbda/shell-set-up/master/install_docker.sh)"
 
