@@ -7,9 +7,8 @@ LABEL maintainer="Siyuan Wang <siyuan.arc@gmail.com>"
 #     bash -c "sed -e '1 iServer = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch' -i /etc/pacman.d/mirrorlist" && \
 #     pacman -Syyuu
 
-RUN pacman -Syyuu --noconfirm
-
-RUN pacman -S --noconfirm curl \
+RUN pacman -Syyuu --noconfirm && \
+    pacman -S --noconfirm curl \
     make \
     zsh \
     unzip \
@@ -21,10 +20,11 @@ RUN pacman -S --noconfirm curl \
 RUN git clone --depth=2 https://github.com/amix/vimrc.git /opt/vim_runtime && \
     sh opt/vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime --all
 
-# ADD . /src
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/Thrimbda/shell-set-up/master/install_docker.sh)"
-# RUN sh -c "src/install_docker.sh"
+
+RUN echo "export JAVA_HOME=/usr/lib/jvm/default" >> "/root/.zshrc"
+
 
 RUN echo "/bin/zsh" | chsh
 
