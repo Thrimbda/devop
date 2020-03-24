@@ -24,9 +24,9 @@ jobs:
     - name: Publish the Docker image
       run: docker push thrimbda/devop:arch
       
-
-  ubuntu_16.04:
-    name: ubuntu_16.04
+      
+  ubuntu-16_04:
+    name: ubuntu-16_04
     runs-on: ubuntu-latest
     
     steps:
@@ -42,8 +42,8 @@ jobs:
       run: docker push thrimbda/devop:16.04
     
     
-  ubuntu_18.04:
-    name: ubuntu_18.04
+  ubuntu-18_04:
+    name: ubuntu-18_04
     runs-on: ubuntu-latest
     
     steps:
