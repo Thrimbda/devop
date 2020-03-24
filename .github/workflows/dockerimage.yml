@@ -1,0 +1,59 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  arch:
+    name: arch
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file arch.dockerfile --tag thrimbda/devop:arch
+    - name: Docker Login
+      uses: Azure/docker-login@v1
+      with: 
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - name: Publish the Docker image
+      run: docker push thrimbda/devop:arch
+      
+
+  ubuntu-16.04:
+    name: ubuntu-16.04
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file 16.04.dockerfile --tag thrimbda/devop:16.04
+    - name: Docker Login
+      uses: Azure/docker-login@v1
+      with: 
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - name: Publish the Docker image
+      run: docker push thrimbda/devop:16.04
+    
+    
+  ubuntu-18.04:
+    name: ubuntu-18.04
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file 18.04.dockerfile --tag thrimbda/devop:18.04
+    - name: Docker Login
+      uses: Azure/docker-login@v1
+      with: 
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    - name: Publish the Docker image
+      run: docker push thrimbda/devop:18.04
