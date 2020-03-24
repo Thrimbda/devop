@@ -49,11 +49,10 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-USER ${USER}
-
 RUN git clone --depth=2 https://github.com/amix/vimrc.git /opt/vim_runtime && \
     sh opt/vim_runtime/install_awesome_parameterized.sh /opt/vim_runtime --all
 
+USER ${USER}
 
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/Thrimbda/shell-set-up/master/install_docker.sh)"
 
