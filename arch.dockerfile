@@ -2,9 +2,9 @@ FROM archlinux:latest
 
 LABEL maintainer="Siyuan Wang <siyuan.arc@gmail.com>"
 
-RUN bash -c "sed -e '1,$ s/^#*/#/' -i /etc/pacman.d/mirrorlist" && \
-    bash -c "sed -e '1 iServer = http://mirrors.aliyun.com/archlinux/\$repo/os/\$arch' -i /etc/pacman.d/mirrorlist" && \
-    pacman -Syy --noconfirm
+# RUN bash -c "sed -e '1,$ s/^#*/#/' -i /etc/pacman.d/mirrorlist" && \
+#     bash -c "sed -e '1 iServer = http://mirrors.aliyun.com/archlinux/\$repo/os/\$arch' -i /etc/pacman.d/mirrorlist" && \
+#     pacman -Syy --noconfirm
 
 RUN pacman -Syyuu --noconfirm && \
     pacman -S --noconfirm curl \
